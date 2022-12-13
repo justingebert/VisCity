@@ -14,6 +14,10 @@ public class App
     public static void main( String[] args )
     {
         port(8080);
+
+        staticFileLocation("/resources/public/css");
+        staticFileLocation("/resources/public/img");
+
         get("/", (request, response) -> {
             long time = System.currentTimeMillis();
             Map<String, Object> model = new HashMap<>();
