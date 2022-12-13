@@ -13,10 +13,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        port(8080);
-
-        staticFileLocation("/resources/public/css");
-        staticFileLocation("/resources/public/img");
+        port(20002);
+        staticFileLocation("/public");
+        /*staticFileLocation("/resources/public/css");
+        staticFileLocation("/resources/public/img");*/
 
         get("/", (request, response) -> {
             long time = System.currentTimeMillis();
