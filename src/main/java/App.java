@@ -2,6 +2,7 @@
  * Hello world!
  *
  */
+import org.junit.jupiter.api.Test;
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
@@ -11,6 +12,10 @@ import java.util.Map;
 import static spark.Spark.*;
 public class App 
 {
+
+    public static String test(){
+        return "test";
+    };
     public static void main( String[] args )
     {
         port(20002);
@@ -26,6 +31,13 @@ public class App
             return modelAndView;
         }, new JadeTemplateEngine());
 
+        get("/:user",(req,res) -> {
+            String user = req.params(":user");
+            Map<String, Object> model = new HashMap<>();
+            model.put("mainpage", user);
+            ModelAndView modelAndView = new ModelAndView(model, "mainpage");
+            return modelAndView;
+        },new JadeTemplateEngine());
 
     }
 }
