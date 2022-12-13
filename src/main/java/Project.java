@@ -7,5 +7,11 @@ public class Project {
     public Date lastEdited;
     public Map map;
 
+    public Project (User user, Date datenow){
+        this.user = user;
+        this.dateCreated = datenow;
+        this.lastEdited = datenow;
+    }
+
 
 }
