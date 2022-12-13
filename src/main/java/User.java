@@ -7,6 +7,11 @@ public class User {
     //maybe shoudlnt be here rather in db
     private String password;
 
+    /**
+     * @param email (String)
+     * @param username (String)
+     * @param password (String)
+     */
     public User(String email,String username,String password){
         this.email = email;
         this.username = username;

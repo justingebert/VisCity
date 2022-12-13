@@ -2,7 +2,7 @@
  * Hello world!
  *
  */
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
@@ -13,9 +13,17 @@ import static spark.Spark.*;
 public class App 
 {
 
+    /**
+     * @return a generic string to test the app tester
+     */
     public static String test(){
-        return "test";
+        return "it works";
     };
+
+    /**
+     *
+     * @param
+     */
     public static void main( String[] args )
     {
         port(20002);
@@ -39,6 +47,7 @@ public class App
             return modelAndView;
         },new JadeTemplateEngine());
 
+        User Frank = new User("Frank@aol.com", "Frank123", "LolaFr123");
     }
 }
 
