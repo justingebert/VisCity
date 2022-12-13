@@ -30,7 +30,7 @@ public class App
     /**
      * This function return the number of projects that have been created by a user
      *
-     * @param user
+     * @param user user to count the projects of
      * @return number of created projects
      */
     public int numOfProjects(User user){
