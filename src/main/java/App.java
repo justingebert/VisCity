@@ -6,6 +6,7 @@
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +20,28 @@ public class App
     public static String test(){
         return "test";
     };
+
+
+    public static String createBranch(){
+        return "created";
+    }
+
+    public int getLength(ArrayList<Project> array){
+        return  array.size();
+    }
+
+    /**
+     * This function return the number of projects that have been created by a user
+     *
+     * @param user user to count the projects of
+     * @return number of created projects
+     */
+    public int numOfProjects(User user){
+        return getLength(user.getProjects());
+    }
+
+
+
     public static void main( String[] args )
     {
         port(20002);
