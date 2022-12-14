@@ -38,6 +38,7 @@ public class App
             String user = req.params(":user");
             Map<String, Object> model = new HashMap<>();
             model.put("mainpage", user);
+            int g = 2;
             ModelAndView modelAndView = new ModelAndView(model, "mainpage");
             return modelAndView;
         },new JadeTemplateEngine());
