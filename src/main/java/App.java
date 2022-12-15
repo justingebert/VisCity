@@ -31,6 +31,7 @@ public class App
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
+        http://localhost:20002/
         get("/", (request, response) -> {
             long time = System.currentTimeMillis();
             Map<String, Object> model = new HashMap<>();
@@ -47,7 +48,15 @@ public class App
             return modelAndView;
         },new JadeTemplateEngine());
 
-        User Frank = new User("Frank@aol.com", "Frank123", "LolaFr123");
+        //http://localhost:20002/editmode
+        get("/editmode", (request, response) -> {
+            String edit = "edit";
+            Map<String, Object> model = new HashMap<>();
+            model.put("editmode", edit);
+            ModelAndView modelAndView = new ModelAndView(model, "editmode");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
     }
 }
 
