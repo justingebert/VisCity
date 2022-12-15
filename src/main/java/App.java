@@ -52,17 +52,17 @@ public class App
         get("/", (request, response) -> {
             long time = System.currentTimeMillis();
             Map<String, Object> model = new HashMap<>();
-            model.put("mainpage", time);
-            ModelAndView modelAndView = new ModelAndView(model, "mainpage");
+            model.put("index", time);
+            ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         }, new JadeTemplateEngine());
 
         get("/:user",(req,res) -> {
             String user = req.params(":user");
             Map<String, Object> model = new HashMap<>();
-            model.put("mainpage", user);
+            model.put("index", user);
             int g = 2;
-            ModelAndView modelAndView = new ModelAndView(model, "mainpage");
+            ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         },new JadeTemplateEngine());
 
