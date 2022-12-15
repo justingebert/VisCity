@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import static spark.Spark.*;
 
 //HALLO TEST TEST
@@ -49,16 +50,23 @@ public class App
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
+        path("/",() ->{
+            post();
+        });
+
         get("/", (request, response) -> {
-            long time = System.currentTimeMillis();
+
+            String username =
+            System.out.println(username);
             Map<String, Object> model = new HashMap<>();
-            model.put("index", time);
-            ModelAndView modelAndView = new ModelAndView(model, "index");
+            model.put("login", username);
+            ModelAndView modelAndView = new ModelAndView(model, "login");
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/:user",(req,res) -> {
-            String user = req.params(":user");
+
+        get("/user/:id",(req,res) -> {
+            String user = req.params(":id");
             Map<String, Object> model = new HashMap<>();
             model.put("index", user);
             int g = 2;
