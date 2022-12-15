@@ -66,6 +66,15 @@ public class App
             return modelAndView;
         },new JadeTemplateEngine());
 
+        //http://localhost:20002
+        get("/editmode", (request, response) -> {
+            String edit = "edit";
+            Map<String, Object> model = new HashMap<>();
+            model.put("editmode", edit);
+            ModelAndView modelAndView = new ModelAndView(model, "editmode");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
     }
 }
 
