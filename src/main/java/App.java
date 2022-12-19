@@ -44,7 +44,7 @@ public class App
 
     public static void main( String[] args )
     {
-        port(23232);
+        port(20009);
         staticFileLocation("/public");
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
@@ -57,7 +57,7 @@ public class App
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        /*get("/:user",(req,res) -> {
+        get("/:user",(req,res) -> {
             String user = req.params(":user");
             Map<String, Object> model = new HashMap<>();
             model.put("index", user);
@@ -65,16 +65,15 @@ public class App
             ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         },new JadeTemplateEngine());
-        */
-        //http://localhost:20002
-        get("/editmode", (request, response) -> {
+
+
+        get("/editmode", ((request, response) -> {
             String edit = "edit";
             Map<String, Object> model = new HashMap<>();
             model.put("editmode", edit);
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
             return modelAndView;
-        }, new JadeTemplateEngine());
-
+        },new JadeTemplateEngine());
     }
 }
 
