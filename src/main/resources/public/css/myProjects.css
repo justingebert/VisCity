@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+
+.headline {
+    color: white;
+    background-color: #464646;
+    padding: 0.8%;
+}
+
+footer {
+    background-color: #464646;
+    color: white;
+    padding: 0.5%;
+    font-size: 0.6em;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.flexcontainer {
+    display: flex;
+    flex-direction: row;
+    background-color: light rgba(212, 212, 212, 0.49);
+    justify-content: space-between;
+    padding: 3%;
+}
+
+.projectscontainer{
+
+}
+
+.buttoncontainer {
+}
+
+button{
+    background-color: #00bdbd;
+    padding: 1%;
+    border: 3px solid;
+    text-align: center;
+    text-decoration: none;
+}
+
+button:hover{
+    background-color: aquamarine;
+}

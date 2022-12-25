@@ -1,6 +1,5 @@
 /**
  * Hello world!
- *
  */
 
 import spark.ModelAndView;
@@ -14,20 +13,18 @@ import static spark.Spark.*;
 
 //HALLO TEST TEST
 //test for updateing branches when master is changed
-public class App 
-{
+public class App {
 
-    public static String test(){
+    public static String test() {
         return "test";
-    };
+    }
 
-
-    public static String createBranch(){
+    public static String createBranch() {
         return "created";
     }
 
-    public int getLength(ArrayList<Project> array){
-        return  array.size();
+    public int getLength(ArrayList<Project> array) {
+        return array.size();
     }
 
     /**
@@ -36,44 +33,43 @@ public class App
      * @param user user to count the projects of
      * @return number of created projects
      */
-    public int numOfProjects(User user){
+    public int numOfProjects(User user) {
         return getLength(user.getProjects());
     }
 
 
-
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         port(20009);
         staticFileLocation("/public");
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
         get("/", (request, response) -> {
-            long time = System.currentTimeMillis();
             Map<String, Object> model = new HashMap<>();
-            model.put("index", time);
             ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/:user",(req,res) -> {
+        get("/myprojects", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "myprojects");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
+        get("/editmode", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "editmode");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
+        get("/user/:user", (req, res) -> {
             String user = req.params(":user");
             Map<String, Object> model = new HashMap<>();
             model.put("index", user);
             int g = 2;
-            ModelAndView modelAndView = new ModelAndView(model, "index");
+            ModelAndView modelAndView = new ModelAndView(model, "landingpage");
             return modelAndView;
-        },new JadeTemplateEngine());
-
-
-        get("/editmode", ((request, response) -> {
-            String edit = "edit";
-            Map<String, Object> model = new HashMap<>();
-            model.put("editmode", edit);
-            ModelAndView modelAndView = new ModelAndView(model, "editmode");
-            return modelAndView;
-        },new JadeTemplateEngine());
+        }, new JadeTemplateEngine());
     }
 }
 
