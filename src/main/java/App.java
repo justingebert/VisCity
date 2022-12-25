@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+import org.json.*;
 import static spark.Spark.*;
 
 //HALLO TEST TEST
@@ -45,19 +46,31 @@ public class App
 
     public static void main( String[] args )
     {
-        port(20002);
+
         staticFileLocation("/public");
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
-        path("/",() ->{
-            post();
-        });
+        post("/",(req,res)->{
+            String username = req.body();
+            //String jsonString = String.valueOf(req); //assign your JSON String here
+            //System.out.println(req);
+            System.out.println(username);
+            JSONObject obj = new JSONObject(username);
+            System.out.println(obj);
+            Map<String, Object> model = new HashMap<>();
+            model.put("login", username);
+            ModelAndView modelAndView = new ModelAndView(model, "login");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
 
         get("/", (request, response) -> {
 
-            String username =
+
+            String username = request.body();
             System.out.println(username);
+            //System.out.println(username);
             Map<String, Object> model = new HashMap<>();
             model.put("login", username);
             ModelAndView modelAndView = new ModelAndView(model, "login");
