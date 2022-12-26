@@ -27,8 +27,9 @@
 
 .mapcontainer{
     background-color: #b2b2b2;
-    width: 200px;
-    height: 200px;
+    width: 1000px;
+    height: 1000px;
+    position: absolute;
 }
 
 
@@ -52,12 +53,17 @@ footer {
     padding: 3%;
 }
 
+.buttoncontainer {
+    position: absolute;
+}
+
 .buttoncontainer>button{
     background-color: #00bdbd;
     padding: 1%;
     border: 3px solid;
     text-align: center;
     text-decoration: none;
+    position: absolute;
 }
 
 .buttoncontainer>button:hover{

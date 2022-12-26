@@ -45,6 +45,8 @@ public class App {
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
+        StructureController controller = new StructureController(new ArrayList<>());
+
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "index");
@@ -62,6 +64,8 @@ public class App {
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
             return modelAndView;
         }, new JadeTemplateEngine());
+
+        get("/create", controller.createStructure, new JadeTemplateEngine());
 
         get("/user/:user", (req, res) -> {
             String user = req.params(":user");
