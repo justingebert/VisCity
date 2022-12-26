@@ -16,6 +16,7 @@ import static spark.Spark.*;
 public class App {
 
     public static String test() {
+        System.out.println("TTTTTT");
         return "test";
     }
 

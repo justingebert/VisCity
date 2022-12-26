@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Map {
 
-    public ArrayList<Item> items;
+    public ArrayList<Structure> structures;
     public double size;
 
     //maybe better to store different
