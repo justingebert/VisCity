@@ -1,0 +1,21 @@
+.container{
+
+}
+
+.infocontainer{
+
+    outline: 2px dashed red;
+}
+
+.buttoncontainer{
+    outline: 2px dashed blue;
+}
+
+button{
+    width: 100px;
+    height: 40px;
+    background-color: darkgreen;
+    color: white;
+    border-radius: 3px;
+    border-color: darkgreen;
+}

@@ -49,6 +49,19 @@ public class App
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
+        get("user/:id/createproject",(req,res) -> {
+            Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "createproject");
+            return modelAndView;
+        },new JadeTemplateEngine());
+
+        post("user/:id/createproject",(req,res) -> {
+            Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "index");
+            return modelAndView;
+        },new JadeTemplateEngine());
+
+
         get("/", (request, response) -> {
             long time = System.currentTimeMillis();
             Map<String, Object> model = new HashMap<>();
