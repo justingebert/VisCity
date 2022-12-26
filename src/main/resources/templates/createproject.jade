@@ -7,22 +7,23 @@ html
     body
 
         .container
-            .infocontainer
-                label Projectname:
-                    input
-                br
-                label Description
-                    input
-                br
-                label Tags:
-                    input
-                br
-                label Private
-                    input(type='checkbox')
+            form(method="post")
+                .infocontainer
+                    label Projectname:
+                        input(type="text", name="projectname", required=true)
+                    br
+                    label Description
+                        input
+                    br
+                    label Tags:
+                        input
+                    br
+                    label Private
+                        input(type='checkbox')
 
 
-            .buttoncontainer
-                button CREATE
+                .buttoncontainer
+                    button(type="submit") CREATE
 
     footer
         p cc

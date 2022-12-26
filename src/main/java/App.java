@@ -44,7 +44,7 @@ public class App
 
     public static void main( String[] args )
     {
-        port(20002);
+
         staticFileLocation("/public");
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
@@ -56,8 +56,10 @@ public class App
         },new JadeTemplateEngine());
 
         post("user/:id/createproject",(req,res) -> {
+            String projectName = req.queryParams("projectname");
+            System.out.println(projectName);
             Map<String, Object> model = new HashMap<>();
-            ModelAndView modelAndView = new ModelAndView(model, "index");
+            ModelAndView modelAndView = new ModelAndView(model, "project");
             return modelAndView;
         },new JadeTemplateEngine());
 
