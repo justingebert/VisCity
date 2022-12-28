@@ -1,19 +1,18 @@
 <form method="get" action="/create">
     <label for="width">Width:</label>
-    <input type="text" id="width" name="width" required/>
+    <input type="number" max="1000" id="width" name="width" placeholder="max 1000" required/>
     <label for="height">Height:</label>
-    <input type="text" id="height" name="height" required/>
+    <input type="number" max="750" id="height" name="height" placeholder="max 750" required/>
     <label for="xCoordinate">x-Coordinate:</label>
-    <input type="text" id="xCoordinate" name="xCoordinate" required/>
+    <input type="number" max="1000" id="xCoordinate" name="xCoordinate" placeholder="max 1000" required/>
     <label for="yCoordinate">y-Coordinate:</label>
-    <input type="text" id="yCoordinate" name="yCoordinate" required/>
+    <input type="number" max="750" id="yCoordinate" name="yCoordinate" placeholder="max 750" required/>
     <label for="type">Type:</label>
     <select id="type" name="type">
         <option value="building">Building</option>
         <option value="greenSpace">Green Space</option>
         <option value="street">Street</option>
     </select>
-
 
     <button type="submit">ADD NEW STRUCTURE</button>
 </form>

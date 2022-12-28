@@ -28,21 +28,16 @@ footer {
     padding: 3%;
 }
 
-.projectscontainer{
-
-}
-
-.buttoncontainer {
-}
-
-button{
+.buttoncontainer>form>button {
     background-color: #00bdbd;
     padding: 1%;
     border: 3px solid;
     text-align: center;
     text-decoration: none;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
-button:hover{
+.buttoncontainer>form>button:hover{
     background-color: aquamarine;
 }
