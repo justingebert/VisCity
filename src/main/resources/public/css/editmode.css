@@ -14,15 +14,18 @@
     align-items: center;
 }
 
-.headline>button{
+.headline>form>button{
     background-color: red;
-    padding: 1%;
     border: 3px solid;
     text-align: center;
     text-decoration: none;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
-.headline>button:hover{
+.headline>form>button:hover{
     background-color: greenyellow;
 }
 
@@ -71,7 +74,7 @@ footer {
     background-color: aquamarine;
 }
 
-form {
+.buttoncontainer>form {
     width: 200px;
     background-color: #f1f1f1;
     border: 1px solid #ccc;
@@ -81,11 +84,11 @@ form {
     justify-content: center;
     margin: 10px;
 }
-form>button{
+.buttoncontainer>form>button{
     padding: 10px;
 }
 
-form>button{
+.buttoncontainer>form>button{
     padding: 10px;
     margin: 10px;
     text-decoration: none;
@@ -95,11 +98,11 @@ form>button{
     font-size: 16px;
 }
 
-form>button:hover{
+.buttoncontainer>form>button:hover{
     background-color: deepskyblue;
 }
 
-form>input[type="number"] {
+.buttoncontainer>form>input[type="number"] {
     padding: 12px 20px;
     margin: 8px 0;
     border: 2px solid;
@@ -107,7 +110,7 @@ form>input[type="number"] {
     font-size: 16px;
 }
 
-form>select{
+.buttoncontainer>form>select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;

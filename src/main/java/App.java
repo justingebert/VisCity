@@ -5,8 +5,7 @@
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.Map;
 
 import static spark.Spark.*;
@@ -35,7 +34,7 @@ public class App {
      * @return number of created projects
      */
     public int numOfProjects(User user) {
-        return getLength(user.getProjects());
+        return 0;
     }
 
 
@@ -45,13 +44,34 @@ public class App {
         /*staticFileLocation("/resources/public/css");
         staticFileLocation("/resources/public/img");*/
 
+        //List<Project> projects = new LinkedList<>();
+        ProjectController projects = new ProjectController(new LinkedList<>());
+
+        Structure a = new Structure(223,12,333, 123,"black");
+        Structure b = new Structure(12,124,22, 553,"blue");
+
+
+        Project First = new Project(1, new ArrayList<>());
+        First.projectStructures.add(a);
+        First.projectStructures.add(b);
+
+        projects.add(First);
+
+        //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
+
         StructureController controller = new StructureController(new ArrayList<>());
+        // ProjectController projects = new ProjectController(new ArrayList<>());
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         }, new JadeTemplateEngine());
+
+        /*get("/projects", (request, response) -> {
+            System.out.println("Get Projects called!");
+            return ProjectController.getProjects(request, response, user);
+        }, new JadeTemplateEngine());*/
 
         get("/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -67,10 +87,14 @@ public class App {
 
         get("/create", controller.createStructure, new JadeTemplateEngine());
 
+        // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
+
+        // get("/save", projects.saveProject, new JadeTemplateEngine());
+
         get("/user/:user", (req, res) -> {
-            String user = req.params(":user");
+            String user2 = req.params(":user");
             Map<String, Object> model = new HashMap<>();
-            model.put("index", user);
+            model.put("index", user2);
             int g = 2;
             ModelAndView modelAndView = new ModelAndView(model, "landingpage");
             return modelAndView;
