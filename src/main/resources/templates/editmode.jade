@@ -1,0 +1,20 @@
+html
+    head
+        title EDIT
+        link(rel='stylesheet',href='/css/editmode.css')
+
+    body
+        .container
+            .headline
+                h1 VISCITY
+                h2 example project - edit mode
+                include save.html
+
+            .flexcontainer
+                .mapcontainer
+                    include structuresList
+                .buttoncontainer
+                    include addNewStructure.html
+
+    footer
+        p (c) 2023 Gebert & Rehtanz Gmbh

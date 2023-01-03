@@ -1,20 +1,17 @@
 html
     head
-        title VisCity
-        link(rel='stylesheet',href='/css/styles.css')
-        strong VISCITY
+        title LandingPage
+        link(rel='stylesheet',href='/css/index.css')
 
     body
+        .headline
+            h1 VISCITY
         .container
             .infocontainer
-                p name:
-                p creator:
-                p last edited:
-                p created:
-            .projectscontainer
-                p projects
+                h1 your interactive city planner
             .buttoncontainer
-                button CREATE
+                include getstarted.html
+                button login
 
     footer
-        p cc
+        p (c) 2023 Gebert & Rehtanz Gmbh

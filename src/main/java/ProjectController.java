@@ -1,0 +1,46 @@
+import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
+import spark.TemplateViewRoute;
+import spark.template.jade.JadeTemplateEngine;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class ProjectController {
+
+    public List<Project> projects;
+
+    public ProjectController(List<Project> projects) {
+        this.projects = projects;
+    }
+
+
+    public static ModelAndView getProjects (Request req, Response res, User user) {
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("projects", user.projects);
+        ModelAndView modelAndView = new ModelAndView(model, "myprojects");
+
+        return modelAndView;
+    }
+
+    public void add(Project a) {
+        projects.add(a);
+    }
+
+    /*public TemplateViewRoute saveProject = (Request req, Response res) -> {
+
+        Project project = new Project(List < Project > projectStructures);
+        projects.add(projectStructures);
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("projects", project);
+        ModelAndView modelAndView = new ModelAndView(model, "save");
+
+        return modelAndView;
+
+    };*/
+
+}

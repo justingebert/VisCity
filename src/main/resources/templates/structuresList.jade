@@ -1,0 +1,4 @@
+if structures
+    ul(style='list-style: none;')
+        each structure in structures
+            li(style='width:' + structure.width + 'px; height:' + structure.height + 'px; background-color:' + structure.backgroundColor + '; top:' + structure.yCoordinate + 'px; left: ' + structure.xCoordinate + 'px; position: absolute;')
