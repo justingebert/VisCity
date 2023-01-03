@@ -75,7 +75,8 @@ public class App {
 
         get("/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-
+            List<Project> available = projects.projects;
+            model.put("projects", available);
             ModelAndView modelAndView = new ModelAndView(model, "myprojects");
             return modelAndView;
         }, new JadeTemplateEngine());
