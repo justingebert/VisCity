@@ -1,30 +1,35 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class User {
 
     private String email;
     private String username;
-    //maybe shoudlnt be here rather in db
     private String password;
+    public List<Project> projects;
 
-    public User(String email,String username,String password){
+
+    /**
+     * @param email    (String)
+     * @param username (String)
+     * @param password (String)
+     */
+    public User(String email, String username, String password, List<Project> projects) {
         this.email = email;
         this.username = username;
         this.password = password;
+        this.projects = projects;
     }
-    public ArrayList<Project> projects = new ArrayList();
 
-    public ArrayList<Project> getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
-    public void addProject(Project project){
+    public void addProject(Project project) {
         projects.add(project);
     }
 
-    public void removeProject(Project project){
+    public void removeProject(Project project) {
         projects.remove(project);
     }
-
-
 }
