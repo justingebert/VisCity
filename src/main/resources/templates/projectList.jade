@@ -1,4 +1,3 @@
-if projects
-    ul(style='list-style: none;')
-        each project in projects
-            li
+p #{projects}
+    for project in projects
+        li #{project.projectname}

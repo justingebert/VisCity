@@ -39,10 +39,7 @@ public class App {
 
 
     public static void main(String[] args) {
-        port(20009);
         staticFileLocation("/public");
-        /*staticFileLocation("/resources/public/css");
-        staticFileLocation("/resources/public/img");*/
 
         //List<Project> projects = new LinkedList<>();
         ProjectController projects = new ProjectController(new LinkedList<>());
@@ -51,11 +48,14 @@ public class App {
         Structure b = new Structure(12,124,22, 553,"blue");
 
 
-        Project First = new Project(1, new ArrayList<>());
+        Project First = new Project(0,"test", new ArrayList<>());
         First.projectStructures.add(a);
         First.projectStructures.add(b);
 
+        Project Second = new Project(0,"test2", new ArrayList<>());
+
         projects.add(First);
+        projects.add(Second);
 
         //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
 
@@ -75,6 +75,7 @@ public class App {
 
         get("/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+
             ModelAndView modelAndView = new ModelAndView(model, "myprojects");
             return modelAndView;
         }, new JadeTemplateEngine());
@@ -85,11 +86,28 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
+        get("/projectlist", (request, response) -> {
+            ModelAndView modelAndView = projects.local();
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
         get("/create", controller.createStructure, new JadeTemplateEngine());
 
         // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
 
         // get("/save", projects.saveProject, new JadeTemplateEngine());
+
+        //use post??
+        get("/createproject", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+
+            String projectname = request.queryParams("projectname");
+            Project project = new Project(1,projectname,new ArrayList<>());
+            projects.add(project);
+            ModelAndView modelAndView = new ModelAndView(model, "createproject");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
 
         get("/user/:user", (req, res) -> {
             String user2 = req.params(":user");
