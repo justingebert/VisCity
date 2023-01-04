@@ -1,3 +1,5 @@
 p #{projects}
-    for project in projects
-        li #{project.projectname}
+    ul
+        for project in projects
+            li
+                a(href="http://localhost/project/#{project.projectname}/editmode") hallo

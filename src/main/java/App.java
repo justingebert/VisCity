@@ -81,7 +81,7 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/editmode", (request, response) -> {
+        get("/project/:projectid/editmode", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
             return modelAndView;

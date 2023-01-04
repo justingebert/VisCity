@@ -13,7 +13,7 @@ html
                     h2 MY PROJECTS
                     p #{projects}
                     for project in projects
-                        li #{project.projectname}
+                        li: a(href="/project/#{project.projectname}/editmode") #{project.projectname}
                     //include projectList
 
                 .buttoncontainer

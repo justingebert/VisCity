@@ -2,12 +2,19 @@ html
     head
         title VisCity
         link(rel='stylesheet',href='/css/createproject.css')
+        script.
+            function setURL() {
+                let action = "/project/" + document.getElementByName("projectname").value + "/editmode";
+                let form = document.getElementById('form');
+                form.action = action;
+            };
+
         strong VISCITY
 
     body
 
         .container
-            form(method="get" action="/editmode")
+            form(method="get" onsubmit= setURL() id="form")
                 .infocontainer
                     label Projectname:
                         input(type="text", name="projectname", required=true)
