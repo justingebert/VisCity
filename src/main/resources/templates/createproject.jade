@@ -1,0 +1,37 @@
+html
+    head
+        title VisCity
+        link(rel='stylesheet',href='/css/createproject.css')
+        script.
+            function setURL() {
+                let projectname = document.getElementByName("projectname").value;
+                let action = `/project/${#{projectname}}//editmode`;
+                let form = document.getElementById('form');
+                console.log(action);
+                form.action = action;
+            };
+
+        strong VISCITY
+
+    body
+
+        .container
+            form(method="post" id="form")
+                .infocontainer
+                    label Projectname:
+                        input(type="text", name="projectname", required=true value=projectname)
+                    br
+                    label Description
+                        input
+                    br
+                    label Tags:
+                        input
+                    br
+                    label Private
+                        input(type='checkbox')
+
+                .buttoncontainer
+                    button(type="submit") CREATE
+
+    footer
+        p cc

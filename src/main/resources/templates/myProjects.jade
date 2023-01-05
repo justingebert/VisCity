@@ -11,10 +11,15 @@ html
             .flexcontainer
                 .projectscontainer
                     h2 MY PROJECTS
-                    include projectList
+                    p #{projects}
+                    for project in projects
+                        li: a(href="/project/#{project.projectname}/editmode") #{project.projectname}
+                    //include projectList
 
                 .buttoncontainer
                     include createnewproject.html
+                .buttoncontainer2
+                    include createnewproject2.html
 
     footer
         p (c) 2023 Gebert & Rehtanz Gmbh

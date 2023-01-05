@@ -1,4 +1,5 @@
-if projects
-    ul(style='list-style: none;')
-        each project in projects
+p #{projects}
+    ul
+        for project in projects
             li
+                a(href="http://localhost/project/#{project.projectname}/editmode") hallo
