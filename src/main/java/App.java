@@ -98,15 +98,20 @@ public class App {
 
         // get("/save", projects.saveProject, new JadeTemplateEngine());
 
-        //use post??
+        //TODO use post?? res.redirrect -> /project/queryparameter:
         get("/createproject", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "createproject");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
+        post("/createproject", (request, response) -> {
 
             String projectname = request.queryParams("projectname");
             Project project = new Project(1,projectname,new ArrayList<>());
             projects.add(project);
-            ModelAndView modelAndView = new ModelAndView(model, "createproject");
-            return modelAndView;
+            response.redirect("project/"+projectname+"/editmode");
+            return null;
         }, new JadeTemplateEngine());
 
 

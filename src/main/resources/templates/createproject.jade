@@ -4,8 +4,10 @@ html
         link(rel='stylesheet',href='/css/createproject.css')
         script.
             function setURL() {
-                let action = "/project/" + document.getElementByName("projectname").value + "/editmode";
+                let projectname = document.getElementByName("projectname").value;
+                let action = `/project/${#{projectname}}//editmode`;
                 let form = document.getElementById('form');
+                console.log(action);
                 form.action = action;
             };
 
@@ -14,10 +16,10 @@ html
     body
 
         .container
-            form(method="get" onsubmit= setURL() id="form")
+            form(method="post" id="form")
                 .infocontainer
                     label Projectname:
-                        input(type="text", name="projectname", required=true)
+                        input(type="text", name="projectname", required=true value=projectname)
                     br
                     label Description
                         input
