@@ -27,6 +27,7 @@ public class App {
         return array.size();
     }
 
+
     /**
      * This function return the number of projects that have been created by a user
      *

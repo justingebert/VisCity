@@ -42,8 +42,6 @@ public class ProjectController {
         return modelAndView;
     }
 
-
-
     public void add(Project a) {
         projects.add(a);
     }

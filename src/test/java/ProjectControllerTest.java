@@ -8,7 +8,6 @@ class ProjectControllerTest {
 
     @Test
     void add() {
-
         ProjectController projects = new ProjectController(new ArrayList<>());
         Project project1 = new Project(0,"test1",new ArrayList<>());
         Project project2 = new Project(0,"test1",new ArrayList<>());
