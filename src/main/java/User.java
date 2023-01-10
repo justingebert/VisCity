@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -6,7 +5,7 @@ public class User {
     private String email;
     private String username;
     private String password;
-    public List<Project> projects;
+    public ProjectController projectsController;
 
 
     /**
@@ -14,22 +13,27 @@ public class User {
      * @param username (String)
      * @param password (String)
      */
-    public User(String email, String username, String password, List<Project> projects) {
+    public User(String email, String username, String password, ProjectController projectController) {
         this.email = email;
         this.username = username;
         this.password = password;
-        this.projects = projects;
+        this.projectsController = projectController;
+    }
+
+    public String getUserInfo(){
+        //String s = this.username + ", " + this.email + ", " + this.password;
+        return null;
     }
 
     public List<Project> getProjects() {
-        return projects;
+        return projectsController.projects;
     }
 
     public void addProject(Project project) {
-        projects.add(project);
+        projectsController.add(project);
     }
 
     public void removeProject(Project project) {
-        projects.remove(project);
+        projectsController.projects.remove(project);
     }
 }

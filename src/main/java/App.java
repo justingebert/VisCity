@@ -83,7 +83,12 @@ public class App {
         }, new JadeTemplateEngine());
 
         get("/project/:projectid/editmode", (request, response) -> {
+            String projectname = request.params("projectid");
+            //Project project = projects.getProjectByName(projectname);
+
             Map<String, Object> model = new HashMap<>();
+            //for(Structure structure:)
+            //model.put(project.projectStructures)
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
             return modelAndView;
         }, new JadeTemplateEngine());
