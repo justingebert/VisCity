@@ -14,3 +14,4 @@ public class Structure {
         this.backgroundColor = backgroundColor;
     }
 }
+

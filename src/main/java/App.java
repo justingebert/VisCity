@@ -106,7 +106,6 @@ public class App {
         }, new JadeTemplateEngine());
 
         post("/createproject", (request, response) -> {
-
             String projectname = request.queryParams("projectname");
             Project project = new Project(1,projectname,new ArrayList<>());
             projects.add(project);
