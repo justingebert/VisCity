@@ -23,7 +23,7 @@ public class User {
     public String getUserInfo(){
         //String s = this.username + ", " + this.email + ", " + this.password;
         return null;
-    }
+    }   
 
     public List<Project> getProjects() {
         return projectsController.projects;

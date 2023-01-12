@@ -14,6 +14,7 @@ import static spark.Spark.*;
 //test for updateing branches when master is changed
 public class App {
 
+
     public static String test() {
         System.out.println("TTTTTT");
         return "test";
@@ -69,12 +70,28 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
+        get("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            ModelAndView modelAndView = new ModelAndView(model, "login");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
+        post("/login", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String userID = request.queryParams("username");
+            String userpassword = request.queryParams("username");
+            User user1 = new
+            ModelAndView modelAndView = new ModelAndView(model, "login");
+            response.redirect("/user/"+userID+"/myprojects");
+            return modelAndView;
+        }, new JadeTemplateEngine());
+
         /*get("/projects", (request, response) -> {
             System.out.println("Get Projects called!");
             return ProjectController.getProjects(request, response, user);
         }, new JadeTemplateEngine());*/
 
-        get("/myprojects", (request, response) -> {
+        get("/user/:userid/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Project> available = projects.projects;
             model.put("projects", available);
@@ -82,7 +99,7 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/project/:projectid/editmode", (request, response) -> {
+        get("/user/:userid/project/:projectid/editmode", (request, response) -> {
             String projectname = request.params("projectid");
             //Project project = projects.getProjectByName(projectname);
 
@@ -112,7 +129,6 @@ public class App {
         }, new JadeTemplateEngine());
 
         post("/createproject", (request, response) -> {
-
             String projectname = request.queryParams("projectname");
             Project project = new Project(1,projectname,new ArrayList<>());
             projects.add(project);
