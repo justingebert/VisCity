@@ -14,6 +14,9 @@ import static spark.Spark.*;
 //test for updateing branches when master is changed
 public class App {
 
+
+    public static ProjectController projects;
+
     public static String test() {
         System.out.println("TTTTTT");
         return "test";
@@ -42,20 +45,21 @@ public class App {
         staticFileLocation("/public");
 
         //List<Project> projects = new LinkedList<>();
-        ProjectController projects = new ProjectController(new LinkedList<>());
+        projects = new ProjectController(new ArrayList<>());
 
         Structure a = new Structure(223,12,333, 123,"black");
         Structure b = new Structure(12,124,22, 553,"blue");
-
 
         Project First = new Project(0,"test", new ArrayList<>());
         First.projectStructures.add(a);
         First.projectStructures.add(b);
 
-        Project Second = new Project(0,"test2", new ArrayList<>());
+        Project Second = new Project(1,"test2", new ArrayList<>());
 
         projects.add(First);
         projects.add(Second);
+
+        System.out.println(projects);
 
         //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
 
@@ -83,8 +87,11 @@ public class App {
 
         get("/project/:projectid/editmode", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            ModelAndView modelAndView = new ModelAndView(model, "editmode");
-            return modelAndView;
+            Project test1 = projects.getProjectByID(0);
+            List <Structure> structurelist = test1.projectStructures;
+            model.put("projects", structurelist);
+            //ModelAndView modelAndView = new ModelAndView(model, "editmode");
+            return (ModelAndView) controller.createStructure;
         }, new JadeTemplateEngine());
 
         get("/projectlist", (request, response) -> {
@@ -96,7 +103,7 @@ public class App {
 
         // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
 
-        // get("/save", projects.saveProject, new JadeTemplateEngine());
+        get("/save", projects.saveProject, new JadeTemplateEngine());
 
         //TODO use post?? res.redirrect -> /project/queryparameter:
         get("/createproject", (request, response) -> {

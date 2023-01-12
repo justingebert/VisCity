@@ -54,15 +54,15 @@ public class ProjectController {
 
     /*public TemplateViewRoute saveProject = (Request req, Response res) -> {
 
-        Project project = new Project(List < Project > projectStructures);
-        projects.add(projectStructures);
+        Project projectToSave = new Project(123, "hansistadt", null);
+        projects.add(null);
 
         Map<String, Object> model = new HashMap<>();
-        model.put("projects", project);
+        model.put("projects", projects);
         ModelAndView modelAndView = new ModelAndView(model, "save");
 
         return modelAndView;
 
-    };*/
+    };
 
 }

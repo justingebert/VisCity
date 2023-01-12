@@ -2,7 +2,6 @@ import java.util.List;
 
 public class Project {
     public int id;
-
     public String projectname;
     public List<Structure> projectStructures;
 
