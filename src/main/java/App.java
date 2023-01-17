@@ -59,7 +59,7 @@ public class App {
         projects.add(First);
         projects.add(Second);
 
-        System.out.println(projects);
+        //System.out.println(projects);
 
         //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
 
@@ -102,8 +102,7 @@ public class App {
         get("/create", controller.createStructure, new JadeTemplateEngine());
 
         // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
-
-        get("/save", projects.saveProject, new JadeTemplateEngine());
+        //get("/save", projects.saveProject, new JadeTemplateEngine());
 
         //TODO use post?? res.redirrect -> /project/queryparameter:
         get("/createproject", (request, response) -> {
@@ -119,7 +118,6 @@ public class App {
             response.redirect("project/"+projectname+"/editmode");
             return null;
         }, new JadeTemplateEngine());
-
 
         get("/user/:user", (req, res) -> {
             String user2 = req.params(":user");

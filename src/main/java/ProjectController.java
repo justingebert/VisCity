@@ -62,7 +62,7 @@ public class ProjectController {
         ModelAndView modelAndView = new ModelAndView(model, "save");
 
         return modelAndView;
-
     };
+    */
 
 }
