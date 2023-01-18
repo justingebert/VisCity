@@ -52,7 +52,12 @@ public class ProjectController {
         return this.projects.size();
     }
 
-    /*public TemplateViewRoute saveProject = (Request req, Response res) -> {
+    public Project getProject(int id){
+        return this.projects.get(id);
+    }
+
+    /*
+    public TemplateViewRoute saveProject = (Request req, Response res) -> {
 
         Project projectToSave = new Project(123, "hansistadt", null);
         projects.add(null);
