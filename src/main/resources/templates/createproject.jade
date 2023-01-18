@@ -4,23 +4,24 @@ html
         link(rel='stylesheet',href='/css/createproject.css')
         script.
             function setURL() {
-                let projectname = document.getElementById("projectname").value;
+                let projectname = document.getElementByName("projectname").value;
                 let action = `/project/${#{projectname}}//editmode`;
                 let form = document.getElementById('form');
                 console.log(action);
                 form.action = action;
             };
 
+        strong VISCITY
 
     body
-        .container
-            .headline
-                h1 VISCITY
+
         .container
             form(method="post" id="form")
                 .infocontainer
                     label Projectname:
-                        input(type="text",id="projectname" name="projectname", required=true value=projectname)
+                        input(type="text", name="projectname", required=true value=projectname)
+                    label ProjectId:
+                        input(type="number", name="projectid", required=true)
                     br
                     label Description
                         input

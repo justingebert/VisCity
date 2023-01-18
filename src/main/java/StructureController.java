@@ -43,4 +43,10 @@ public class StructureController {
         return modelAndView;
     };
 
+    public ModelAndView loadStructures(Map<String, Object> model){
+        Map<String, Object> modelput = model;
+        ModelAndView modelAndView = new ModelAndView(modelput, "editmode");
+        return modelAndView;
+    };
+
 }

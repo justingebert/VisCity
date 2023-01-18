@@ -1,7 +1,3 @@
-/**
- * Hello world!
- */
-
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
@@ -14,7 +10,9 @@ import static spark.Spark.*;
 //test for updateing branches when master is changed
 public class App {
 
+    public static ProjectController projects;
 
+    //region useless
     public static String test() {
         System.out.println("TTTTTT");
         return "test";
@@ -28,7 +26,6 @@ public class App {
         return array.size();
     }
 
-
     /**
      * This function return the number of projects that have been created by a user
      *
@@ -38,31 +35,27 @@ public class App {
     public int numOfProjects(User user) {
         return 0;
     }
-
-
+    //endregion
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        //List<Project> projects = new LinkedList<>();
-        ProjectController projects = new ProjectController(new LinkedList<>());
+        //region manual data
+        projects = new ProjectController(new ArrayList<>());
 
         Structure a = new Structure(223,12,333, 123,"black");
         Structure b = new Structure(12,124,22, 553,"blue");
 
-
-        Project First = new Project(0,"test", new ArrayList<>());
+        Project First = new Project(0,"Berlin", new ArrayList<>());
         First.projectStructures.add(a);
         First.projectStructures.add(b);
 
-        Project Second = new Project(0,"test2", new ArrayList<>());
+        Project Second = new Project(1,"Paris", new ArrayList<>());
 
         projects.add(First);
         projects.add(Second);
 
-        //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
-
         StructureController controller = new StructureController(new ArrayList<>());
-        // ProjectController projects = new ProjectController(new ArrayList<>());
+        //endregion
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -70,28 +63,7 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/login", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            ModelAndView modelAndView = new ModelAndView(model, "login");
-            return modelAndView;
-        }, new JadeTemplateEngine());
-
-        post("/login", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String userID = request.queryParams("username");
-            String userpassword = request.queryParams("username");
-            User user1 = new
-            ModelAndView modelAndView = new ModelAndView(model, "login");
-            response.redirect("/user/"+userID+"/myprojects");
-            return modelAndView;
-        }, new JadeTemplateEngine());
-
-        /*get("/projects", (request, response) -> {
-            System.out.println("Get Projects called!");
-            return ProjectController.getProjects(request, response, user);
-        }, new JadeTemplateEngine());*/
-
-        get("/user/:userid/myprojects", (request, response) -> {
+        get("/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Project> available = projects.projects;
             model.put("projects", available);
@@ -99,15 +71,15 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/user/:userid/project/:projectid/editmode", (request, response) -> {
-            String projectname = request.params("projectid");
-            //Project project = projects.getProjectByName(projectname);
-
+        get("/project/:projectid/editmode", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            //for(Structure structure:)
-            //model.put(project.projectStructures)
-            ModelAndView modelAndView = new ModelAndView(model, "editmode");
-            return modelAndView;
+            int projectid = Integer.parseInt(request.params(":projectid"));
+            Project project = projects.getProject(projectid);
+            List <Structure> structurelist = project.projectStructures;
+            model.put("structures", structurelist);
+            model.put("project",project);
+            //System.out.println(structurelist.get(0).xCoordinate);
+            return controller.loadStructures(model);
         }, new JadeTemplateEngine());
 
         get("/projectlist", (request, response) -> {
@@ -115,11 +87,37 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/create", controller.createStructure, new JadeTemplateEngine());
+        get("/project/:projectid/create", (req, res) ->{
+            int projectid = Integer.parseInt(req.params(":projectid"));
+            int width = Integer.parseInt(req.queryParams("width"));
+            int height = Integer.parseInt(req.queryParams("height"));
+            int xCoordinate = Integer.parseInt(req.queryParams("xCoordinate"));
+            int yCoordinate = Integer.parseInt(req.queryParams("yCoordinate"));
+            String type = req.queryParams("type");
+            String backgroundColor = "";
+
+            if (type.equals("building")) {
+                backgroundColor = "blue";
+            } else if (type.equals("greenSpace")) {
+                backgroundColor = "green";
+            } else if (type.equals("street")) {
+                backgroundColor = "black";
+            }
+
+            Structure structure = new Structure(width, height, xCoordinate, yCoordinate, backgroundColor);
+            Project project = projects.getProject(2);
+            project.projectStructures.add(structure);
+            List <Structure> structures = project.projectStructures;
+            Map<String, Object> model = new HashMap<>();
+            model.put("structures", structures);
+            model.put("project", project);
+            ModelAndView modelAndView = new ModelAndView(model, "editmode");
+
+            return modelAndView;
+        }, new JadeTemplateEngine());
 
         // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
-
-        // get("/save", projects.saveProject, new JadeTemplateEngine());
+        //get("/save", projects.saveProject, new JadeTemplateEngine());
 
         //TODO use post?? res.redirrect -> /project/queryparameter:
         get("/createproject", (request, response) -> {
@@ -130,12 +128,12 @@ public class App {
 
         post("/createproject", (request, response) -> {
             String projectname = request.queryParams("projectname");
-            Project project = new Project(1,projectname,new ArrayList<>());
+            int projectID = Integer.parseInt(request.queryParams("projectid"));
+            Project project = new Project(projectID,projectname,new ArrayList<>());
             projects.add(project);
-            response.redirect("project/"+projectname+"/editmode");
+            response.redirect("project/"+projectID+"/editmode");
             return null;
         }, new JadeTemplateEngine());
-
 
         get("/user/:user", (req, res) -> {
             String user2 = req.params(":user");
