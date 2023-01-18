@@ -87,11 +87,13 @@ public class App {
 
         get("/project/:projectid/editmode", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            Project test1 = projects.getProjectByID(0);
+            int projectid = Integer.parseInt(request.params(":projectid"));
+            Project test1 = projects.getProject(projectid);
             List <Structure> structurelist = test1.projectStructures;
-            model.put("projects", structurelist);
-            //ModelAndView modelAndView = new ModelAndView(model, "editmode");
-            return (ModelAndView) controller.createStructure;
+            model.put("structures", structurelist);
+            model.put("project",test1);
+            System.out.println(structurelist.get(0).xCoordinate);
+            return controller.loadStructures(model);
         }, new JadeTemplateEngine());
 
         get("/projectlist", (request, response) -> {
@@ -99,7 +101,34 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        get("/create", controller.createStructure, new JadeTemplateEngine());
+        //get("/create", controller.createStructure, new JadeTemplateEngine());
+
+        get("/project/:projectid/create", (req, res) ->{
+            int width = Integer.parseInt(req.queryParams("width"));
+            int height = Integer.parseInt(req.queryParams("height"));
+            int xCoordinate = Integer.parseInt(req.queryParams("xCoordinate"));
+            int yCoordinate = Integer.parseInt(req.queryParams("yCoordinate"));
+            String type = req.queryParams("type");
+
+            String backgroundColor = "";
+
+            if (type.equals("building")) {
+                backgroundColor = "blue";
+            } else if (type.equals("greenSpace")) {
+                backgroundColor = "green";
+            } else if (type.equals("street")) {
+                backgroundColor = "black";
+            }
+
+            Structure structure = new Structure(width, height, xCoordinate, yCoordinate, backgroundColor);
+            First.projectStructures.add(structure);
+            List <Structure> structures = First.projectStructures;
+            Map<String, Object> model = new HashMap<>();
+            model.put("structures", structures);
+            ModelAndView modelAndView = new ModelAndView(model, "editmode");
+
+            return modelAndView;
+        }, new JadeTemplateEngine());
 
         // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
         //get("/save", projects.saveProject, new JadeTemplateEngine());
@@ -113,9 +142,10 @@ public class App {
 
         post("/createproject", (request, response) -> {
             String projectname = request.queryParams("projectname");
-            Project project = new Project(1,projectname,new ArrayList<>());
+            int projectID = Integer.parseInt(request.queryParams("projectid"));
+            Project project = new Project(projectID,projectname,new ArrayList<>());
             projects.add(project);
-            response.redirect("project/"+projectname+"/editmode");
+            response.redirect("project/"+projectID+"/editmode");
             return null;
         }, new JadeTemplateEngine());
 
