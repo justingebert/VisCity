@@ -10,6 +10,12 @@
     padding: 0.8%;
 }
 
+.headline>h2{
+    margin: auto;
+}
+
+
+
 .infocontainer{
 
     outline: 2px dashed red;

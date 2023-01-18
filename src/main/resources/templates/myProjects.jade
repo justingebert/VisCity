@@ -11,7 +11,6 @@ html
             .flexcontainer
                 .projectscontainer
                     h2 MY PROJECTS
-                    p #{projects}
                     for project in projects
                         li: a(href="/project/#{project.id}/editmode") #{project.projectname}
                     //include projectList

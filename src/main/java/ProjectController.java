@@ -21,14 +21,14 @@ public class ProjectController {
     }
 
 
-    public static ModelAndView getProjects (Request req, Response res, User user) {
+    /*public static ModelAndView getProjects (Request req, Response res, User user) {
 
         Map<String, Object> model = new HashMap<>();
-        model.put("projects", user.projects);
+        model.put("projects", projects);
         ModelAndView modelAndView = new ModelAndView(model, "myprojects");
 
         return modelAndView;
-    }
+    }*/
 
     /**
      * @return template with List of projects
