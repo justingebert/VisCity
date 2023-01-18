@@ -11,29 +11,25 @@ html
                 form.action = action;
             };
 
-        strong VISCITY
-
     body
+        .headline
+            h1 VISCITY
+            h2 create new project
+
 
         .container
             form(method="post" id="form")
                 .infocontainer
-                    label Projectname:
-                        input(type="text", name="projectname", required=true value=projectname)
-                    label ProjectId:
-                        input(type="number", name="projectid", required=true)
-                    br
-                    label Description
-                        input
-                    br
-                    label Tags:
-                        input
-                    br
-                    label Private
+                    div
+                        input(type="text", name="projectname", required=true value=projectname placeholder="projectname")
+                        input(type="number", name="projectid", required=true placeholder="projectID")
+                        input(type="text" placeholder="desc")
+                        input(type="text" placeholder="Tags")
+                        label Private
                         input(type='checkbox')
 
                 .buttoncontainer
                     button(type="submit") CREATE
 
     footer
-        p cc
+        p (c) 2023 Gebert & Rehtanz Gmbh
