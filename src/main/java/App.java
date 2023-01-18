@@ -105,7 +105,7 @@ public class App {
             }
 
             Structure structure = new Structure(width, height, xCoordinate, yCoordinate, backgroundColor);
-            Project project = projects.getProject(2);
+            Project project = projects.getProject(projectid);
             project.projectStructures.add(structure);
             List <Structure> structures = project.projectStructures;
             Map<String, Object> model = new HashMap<>();
