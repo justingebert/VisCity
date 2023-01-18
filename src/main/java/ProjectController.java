@@ -52,17 +52,22 @@ public class ProjectController {
         return this.projects.size();
     }
 
-    /*public TemplateViewRoute saveProject = (Request req, Response res) -> {
+    public Project getProject(int id){
+        return this.projects.get(id);
+    }
 
-        Project project = new Project(List < Project > projectStructures);
-        projects.add(projectStructures);
+    /*
+    public TemplateViewRoute saveProject = (Request req, Response res) -> {
+
+        Project projectToSave = new Project(123, "hansistadt", null);
+        projects.add(null);
 
         Map<String, Object> model = new HashMap<>();
-        model.put("projects", project);
+        model.put("projects", projects);
         ModelAndView modelAndView = new ModelAndView(model, "save");
 
         return modelAndView;
-
-    };*/
+    };
+    */
 
 }

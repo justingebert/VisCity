@@ -1,0 +1,16 @@
+form(method="get" action="/project/"+project.id+"/create")
+    label(for="width") Width:
+    input(type="number" max="1000" id="width" name="width" placeholder="max 1000" required)
+    label(for="height") Height:
+    input(type="number" max="750" id="height" name="height" placeholder="max 750" required)
+    label(for="xCoordinate") x-Coordinate:
+    input(type="number" max="1000" id="xCoordinate" name="xCoordinate" placeholder="max 1000")
+    label(for="yCoordinate") y-Coordinate:
+    input(type="number" max="750" id="yCoordinate" name="yCoordinate" placeholder="max 750" required)
+    label(for="type") Type:
+    select(id="type" name="type")
+        option(value="building") Building
+        option(value="greenSpace") Green Space
+        option(value="street") Street
+
+    button(type="submit") ADD NEW STRUCTURE
