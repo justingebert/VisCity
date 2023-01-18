@@ -4,6 +4,32 @@
     font-family: "Helvetica Neue", sans-serif;
 }
 
+body{
+    background-color: deepskyblue;
+    color: white;
+}
+
+.projectscontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a{
+    color: black;
+    margin: 0px 0px 0px 50px;
+}
+
+li{
+    font-size: x-large;
+    background-color: #00bdbd;;
+    padding: 10px 0px 10px 0px;
+    margin: 5px 0px 5px 0px;
+    list-style: none;
+    border: 2px solid;
+    border-radius: 5px; 
+}
+
 .headline {
     color: white;
     background-color: #464646;
