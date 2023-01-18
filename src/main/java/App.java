@@ -1,7 +1,3 @@
-/**
- * Hello world!
- */
-
 import spark.ModelAndView;
 import spark.template.jade.JadeTemplateEngine;
 
@@ -14,9 +10,9 @@ import static spark.Spark.*;
 //test for updateing branches when master is changed
 public class App {
 
-
     public static ProjectController projects;
 
+    //region useless
     public static String test() {
         System.out.println("TTTTTT");
         return "test";
@@ -39,43 +35,33 @@ public class App {
     public int numOfProjects(User user) {
         return 0;
     }
-
-
+    //endregion
     public static void main(String[] args) {
         staticFileLocation("/public");
 
-        //List<Project> projects = new LinkedList<>();
+        //region manual data
         projects = new ProjectController(new ArrayList<>());
 
         Structure a = new Structure(223,12,333, 123,"black");
         Structure b = new Structure(12,124,22, 553,"blue");
 
-        Project First = new Project(0,"test", new ArrayList<>());
+        Project First = new Project(0,"Berlin", new ArrayList<>());
         First.projectStructures.add(a);
         First.projectStructures.add(b);
 
-        Project Second = new Project(1,"test2", new ArrayList<>());
+        Project Second = new Project(1,"Paris", new ArrayList<>());
 
         projects.add(First);
         projects.add(Second);
 
-        //System.out.println(projects);
-
-        //User user = new User("a.a@a.de", "username", "password", (List<Project>) projects);
-
         StructureController controller = new StructureController(new ArrayList<>());
-        // ProjectController projects = new ProjectController(new ArrayList<>());
+        //endregion
 
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "index");
             return modelAndView;
         }, new JadeTemplateEngine());
-
-        /*get("/projects", (request, response) -> {
-            System.out.println("Get Projects called!");
-            return ProjectController.getProjects(request, response, user);
-        }, new JadeTemplateEngine());*/
 
         get("/myprojects", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -88,11 +74,11 @@ public class App {
         get("/project/:projectid/editmode", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int projectid = Integer.parseInt(request.params(":projectid"));
-            Project test1 = projects.getProject(projectid);
-            List <Structure> structurelist = test1.projectStructures;
+            Project project = projects.getProject(projectid);
+            List <Structure> structurelist = project.projectStructures;
             model.put("structures", structurelist);
-            model.put("project",test1);
-            System.out.println(structurelist.get(0).xCoordinate);
+            model.put("project",project);
+            //System.out.println(structurelist.get(0).xCoordinate);
             return controller.loadStructures(model);
         }, new JadeTemplateEngine());
 
@@ -101,15 +87,13 @@ public class App {
             return modelAndView;
         }, new JadeTemplateEngine());
 
-        //get("/create", controller.createStructure, new JadeTemplateEngine());
-
         get("/project/:projectid/create", (req, res) ->{
+            int projectid = Integer.parseInt(req.params(":projectid"));
             int width = Integer.parseInt(req.queryParams("width"));
             int height = Integer.parseInt(req.queryParams("height"));
             int xCoordinate = Integer.parseInt(req.queryParams("xCoordinate"));
             int yCoordinate = Integer.parseInt(req.queryParams("yCoordinate"));
             String type = req.queryParams("type");
-
             String backgroundColor = "";
 
             if (type.equals("building")) {
@@ -121,10 +105,12 @@ public class App {
             }
 
             Structure structure = new Structure(width, height, xCoordinate, yCoordinate, backgroundColor);
-            First.projectStructures.add(structure);
-            List <Structure> structures = First.projectStructures;
+            Project project = projects.getProject(2);
+            project.projectStructures.add(structure);
+            List <Structure> structures = project.projectStructures;
             Map<String, Object> model = new HashMap<>();
             model.put("structures", structures);
+            model.put("project", project);
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
 
             return modelAndView;

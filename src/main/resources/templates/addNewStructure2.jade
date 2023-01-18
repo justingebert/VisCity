@@ -1,4 +1,4 @@
-form(method="get" action=`/project/${project.id}/create`)
+form(method="get" action="/project/"+project.id+"/create")
     label(for="width") Width:
     input(type="number" max="1000" id="width" name="width" placeholder="max 1000" required)
     label(for="height") Height:
@@ -13,4 +13,4 @@ form(method="get" action=`/project/${project.id}/create`)
         option(value="greenSpace") Green Space
         option(value="street") Street
 
-    button type="submit">ADD NEW STRUCTURE
+    button(type="submit") ADD NEW STRUCTURE
