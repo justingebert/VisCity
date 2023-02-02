@@ -1,5 +1,9 @@
 import java.util.List;
 
+
+/**
+ * for future implementation
+ */
 public class User {
 
     private String email;

@@ -20,30 +20,10 @@ public class ProjectController {
         this.projects = projects;
     }
 
-
-    /*public static ModelAndView getProjects (Request req, Response res, User user) {
-
-        Map<String, Object> model = new HashMap<>();
-        model.put("projects", projects);
-        ModelAndView modelAndView = new ModelAndView(model, "myprojects");
-
-        return modelAndView;
-    }*/
-
     /**
-     * @return template with List of projects
+     * add project to projectlist
+     * @param a project to add
      */
-    public ModelAndView local() {
-
-        Map<String, Object> model = new HashMap<>();
-        List<Project> available = this.projects;
-        model.put("projects", available);
-        ModelAndView modelAndView = new ModelAndView(model, "projectList");
-        return modelAndView;
-    }
-
-
-
     public void add(Project a) {
         projects.add(a);
     }
@@ -52,6 +32,10 @@ public class ProjectController {
         return this.projects.size();
     }
 
+    /**
+     * @param id takes the project id
+     * @return returns the project of the given id
+     */
     public Project getProject(int id){
         return this.projects.get(id);
     }
