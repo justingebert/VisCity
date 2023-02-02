@@ -6,35 +6,29 @@ import java.util.Map;
 
 import static spark.Spark.*;
 
-//HALLO TEST TEST
-//test for updateing branches when master is changed
+
 public class App {
 
     public static ProjectController projects;
 
-    //region useless
-    public static String test() {
-        System.out.println("TTTTTT");
-        return "test";
-    }
-
-    public static String createBranch() {
-        return "created";
-    }
-
+    /**
+     * @param array projectlist
+     * @return num of projects
+     */
     public int getLength(ArrayList<Project> array) {
         return array.size();
     }
-
     /**
      * This function return the number of projects that have been created by a user
      *
      * @param user user to count the projects of
-     * @return number of created projects
+     * @return number of created projects from user
      */
     public int numOfProjects(User user) {
         return 0;
     }
+
+
     //endregion
     public static void main(String[] args) {
         staticFileLocation("/public");
@@ -57,6 +51,8 @@ public class App {
         StructureController controller = new StructureController(new ArrayList<>());
         //endregion
 
+
+        //* Routes
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "index");
@@ -82,12 +78,7 @@ public class App {
             return controller.loadStructures(model);
         }, new JadeTemplateEngine());
 
-        get("/projectlist", (request, response) -> {
-            ModelAndView modelAndView = projects.local();
-            return modelAndView;
-        }, new JadeTemplateEngine());
-
-        get("/project/:projectid/create", (req, res) ->{
+        get("/project/:projectid/create", (req, res) -> {
             int projectid = Integer.parseInt(req.params(":projectid"));
             int width = Integer.parseInt(req.queryParams("width"));
             int height = Integer.parseInt(req.queryParams("height"));
@@ -114,12 +105,9 @@ public class App {
             ModelAndView modelAndView = new ModelAndView(model, "editmode");
 
             return modelAndView;
+
         }, new JadeTemplateEngine());
 
-        // speichert dann die structures liste, die aus dem structures controller in einem projekt ab
-        //get("/save", projects.saveProject, new JadeTemplateEngine());
-
-        //TODO use post?? res.redirrect -> /project/queryparameter:
         get("/createproject", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             ModelAndView modelAndView = new ModelAndView(model, "createproject");
@@ -135,6 +123,7 @@ public class App {
             return null;
         }, new JadeTemplateEngine());
 
+        //! future features
         get("/user/:user", (req, res) -> {
             String user2 = req.params(":user");
             Map<String, Object> model = new HashMap<>();

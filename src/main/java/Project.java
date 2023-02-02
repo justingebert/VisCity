@@ -11,23 +11,19 @@ public class Project {
         this.projectStructures = projectStructures;
     }
 
+    /**
+     * @return list of structures in project
+     */
     public List<Structure> getProjectStructures() {
         return projectStructures;
     }
 
+    /**
+     * load new structures into project
+     * @param projectStructures list of Structures
+     */
     public void setProjectStructures(List<Structure> projectStructures) {
         this.projectStructures = projectStructures;
     }
-
-
-    /*public User user;
-    public Date dateCreated;
-    public Date lastEdited;
-
-    public Project (User user, Date datenow){
-        this.user = user;
-        this.dateCreated = datenow;
-        this.lastEdited = datenow;
-    }*/
 
 }
