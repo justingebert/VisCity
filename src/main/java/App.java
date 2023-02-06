@@ -36,12 +36,30 @@ public class App {
         //region manual data
         projects = new ProjectController(new ArrayList<>());
 
-        Structure a = new Structure(223,12,333, 123,"black");
-        Structure b = new Structure(12,124,22, 553,"blue");
+        Structure s1 = new Structure(50,500,475, 50,"black");
+        Structure s2 = new Structure(900,50,50,350,"black");
+
+        Structure b1 = new Structure(250,300,22, 400,"blue");
+        Structure b2 = new Structure(150,150,22, 20,"blue");
+        Structure b3 = new Structure(150,150,180, 20,"blue");
+        Structure b4 = new Structure(300,150,22, 180,"blue");
+        Structure b5 = new Structure(120,300,345, 20,"blue");
+
+
+
+        Structure g1 = new Structure(200,400,270,400,"green");
+        Structure g2 = new Structure(200,400,525,400,"green");
 
         Project First = new Project(0,"Berlin", new ArrayList<>());
-        First.projectStructures.add(a);
-        First.projectStructures.add(b);
+        First.projectStructures.add(s1);
+        First.projectStructures.add(s2);
+        First.projectStructures.add(b1);
+        First.projectStructures.add(b2);
+        First.projectStructures.add(b3);
+        First.projectStructures.add(b4);
+        First.projectStructures.add(b5);
+        First.projectStructures.add(g1);
+        First.projectStructures.add(g2);
 
         Project Second = new Project(1,"Paris", new ArrayList<>());
 
