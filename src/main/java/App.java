@@ -39,16 +39,28 @@ public class App {
         Structure s1 = new Structure(50,500,475, 50,"black");
         Structure s2 = new Structure(900,50,50,350,"black");
 
-        Structure b1 = new Structure(250,300,22, 400,"blue");
+        Structure b1 = new Structure(250,300,22, 420,"blue");
+        Structure b10 = new Structure(250,300,700, 420,"blue");
+
+
         Structure b2 = new Structure(150,150,22, 20,"blue");
         Structure b3 = new Structure(150,150,180, 20,"blue");
-        Structure b4 = new Structure(300,150,22, 180,"blue");
-        Structure b5 = new Structure(120,300,345, 20,"blue");
+        Structure b4 = new Structure(310,150,22, 180,"blue");
+        Structure b5 = new Structure(120,310,345, 20,"blue");
+
+        Structure b6 = new Structure(120,310,540, 20,"blue");
+        Structure b7 = new Structure(150,50,680, 20,"blue");
+        Structure b8 = new Structure(150,50,680, 290,"blue");
+        Structure b9 = new Structure(120,310,850, 20,"blue");
 
 
 
-        Structure g1 = new Structure(200,400,270,400,"green");
-        Structure g2 = new Structure(200,400,525,400,"green");
+
+        Structure g1 = new Structure(200,400,265,420,"green");
+        Structure g2 = new Structure(200,400,535,420,"green");
+        Structure g3 = new Structure(300,150,325,600,"green");
+        //Structure g4 = new Structure(150,180,680,90,"green");
+
 
         Project First = new Project(0,"Berlin", new ArrayList<>());
         First.projectStructures.add(s1);
@@ -58,8 +70,16 @@ public class App {
         First.projectStructures.add(b3);
         First.projectStructures.add(b4);
         First.projectStructures.add(b5);
+        First.projectStructures.add(b6);
+        First.projectStructures.add(b7);
+        First.projectStructures.add(b8);
+        First.projectStructures.add(b9);
+        First.projectStructures.add(b10);
         First.projectStructures.add(g1);
         First.projectStructures.add(g2);
+        First.projectStructures.add(g3);
+        //First.projectStructures.add(g4);
+
 
         Project Second = new Project(1,"Paris", new ArrayList<>());
 
